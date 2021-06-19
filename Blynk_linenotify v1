@@ -50,8 +50,8 @@ void timerEvent()
     if(line==0)
      {
       line=1;
-      LINE.notify("เปิดไฟฟ้า เวลา "+String(_time))+"น";
-        
+      LINE.notify("เปิดไฟฟ้า เวลา "+String(_time));
+    
      }
   }
   else{
@@ -60,8 +60,8 @@ void timerEvent()
     if(line==1)
      { 
       line=0;
-     LINE.notify("ปิดไฟฟ้า เวลา "+String(_time))+"น";
-   
+     LINE.notify("ปิดไฟฟ้า เวลา "+String(_time));
+     
      
      }
   }
@@ -93,11 +93,17 @@ void loop()
    timeClient.update();
    if(timeClient.getHours()<10)
    {
-     _time += "0" + String(timeClient.getMinutes())+":";
+     _time = "0" + String(timeClient.getHours())+":";
+   }
+   else{
+     _time = String(timeClient.getHours())+":";
    }
    if(timeClient.getMinutes()<10)
    {
      _time += "0" + String(timeClient.getMinutes());
+   }
+   else{
+    _time += String(timeClient.getMinutes()) +"น";
    }
   if(WiFi.status() != WL_CONNECTED)
   { 
