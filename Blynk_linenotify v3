@@ -97,8 +97,13 @@ void setup()
   WiFi.begin(ssid, pass);
   Serial.println("");
   Serial.print("Connecting");
+  Serial.print("SSID=");
+  Serial.println(ssid);
+  Serial.print("PASS=");
+  Serial.println(pass);
   while (WiFi.status() != WL_CONNECTED) {
     Serial.print(".");
+    WiFi.begin(ssid, pass);
     delay(500);
   };
   Blynk.begin(auth, ssid, pass);
