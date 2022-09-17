@@ -140,7 +140,6 @@ void timerEvent()
     if(line_status==0)
      {
       line_status=1;
-      LINE.notify("เปิดไฟฟ้า ");  
       float h = dht.readHumidity()-20;
       float t = dht.readTemperature()-4; // or dht.readTemperature(true) for Fahrenheit
     
@@ -150,8 +149,7 @@ void timerEvent()
       }
       // You can send any value at any time.
       // Please don't send more that 10 values per second.
-      LINE.notify("อุณหภูมิ คือ " + String(t);       
-      LINE.notify("ความชื้น คือ " + String(t);       
+      LINE.notify("\nเปิดปั้มน้ำ\n"+"อุณหภูมิ คือ " + String(t)+"*C\n"+"ความชื้น คือ " + String(h)+"%");       
      }
   }
   else{
@@ -159,7 +157,6 @@ void timerEvent()
     if(line_status==1)
      { 
       line_status=0;
-      LINE.notify("ปิดไฟฟ้า" );
             float h = dht.readHumidity()-20;
       float t = dht.readTemperature()-4; // or dht.readTemperature(true) for Fahrenheit
     
@@ -169,8 +166,8 @@ void timerEvent()
       }
       // You can send any value at any time.
       // Please don't send more that 10 values per second.
-      LINE.notify("อุณหภูมิ คือ " + String(t);       
-      LINE.notify("ความชื้น คือ " + String(t);      
+      LINE.notify("\nปิดปั้มน้ำ\n"+"อุณหภูมิ คือ " + String(t)+"*C\n"+"ความชื้น คือ " + String(h)+"%");       
+    
      }
   }
 }  
